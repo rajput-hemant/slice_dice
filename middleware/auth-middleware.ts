@@ -1,7 +1,7 @@
 import type { NextFunction, Request, Response } from "express";
 import { jwtVerify } from "jose";
 
-import { env } from "@/lib/utils";
+import { env } from "@/lib/env";
 
 export async function authMiddleware(
   req: Request,
@@ -20,7 +20,7 @@ export async function authMiddleware(
     return;
   }
 
-  const key = new TextEncoder().encode(env("JWT_SECRET"));
+  const key = new TextEncoder().encode(env.JWT_SECRET);
 
   try {
     const { payload } = await jwtVerify(session, key, {

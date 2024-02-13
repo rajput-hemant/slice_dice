@@ -1,14 +1,14 @@
+import { SignJWT } from "jose";
+import { eq } from "drizzle-orm";
 import { Router } from "express";
 import { randomUUID } from "crypto";
 import { compare, hash } from "bcrypt";
-import { SignJWT } from "jose";
 
 import { db } from "@/lib/db";
 import { users } from "@/lib/db/schema";
 import type { ServerResponse } from "@/types/server-response";
 import { authSchema, resetPasswordSchema } from "@/validations/auth";
-import { env } from "@/lib/utils";
-import { eq } from "drizzle-orm";
+import { env } from "@/lib/env";
 
 export const auth = Router();
 
@@ -101,7 +101,7 @@ auth.post(["/login", "/signin"], async (req, res) => {
     return;
   }
 
-  const key = new TextEncoder().encode(env("JWT_SECRET"));
+  const key = new TextEncoder().encode(env.JWT_SECRET);
   const expires = new Date(Date.now() + 10 * 1000);
 
   const payload = { id: user.id, email: user.email, expires };

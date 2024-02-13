@@ -1,38 +1,35 @@
 {
-  "name": "slice_dice",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "module": "",
-  "keywords": [],
-  "author": "Khushal-ag",
-  "license": "ISC",
+  "name": "slice-dice",
+  "module": "index.ts",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsx --watch src/index.ts",
-    "build": "tsc",
-    "start": "node dist/index.js"
+    "dev": "tsx watch index.ts",
+    "serve": "tsx index.ts",
+    "fmt": "prettier --write .",
+    "lint": "oxlint",
+    "db:generate": "drizzle-kit generate:sqlite --schema=lib/db/schema.ts",
+    "db:drop": "drizzle-kit drop",
+    "db:pull": "drizzle-kit introspect:sqlite",
+    "db:push": "drizzle-kit push:sqlite",
+    "db:check": "drizzle-kit check:sqlite",
+    "db:studio": "drizzle-kit studio",
+    "seed": "tsx seed.ts"
   },
   "dependencies": {
-    "bcrypt": "^5.1.1",
-    "dotenv": "^16.4.1",
-    "express": "^4.18.2",
-    "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.1.1",
-    "ts-node": "^10.9.2",
-    "tsx": "^4.7.0",
-    "uuid": "^9.0.1"
+    "better-sqlite3": "^9.4.1",
+    "cookie-parser": "^1.4.6",
+    "drizzle-orm": "^0.29.3",
+    "express": "^4.18.2"
   },
   "devDependencies": {
-    "@types/bcrypt": "^5.0.2",
+    "@types/better-sqlite3": "^7.6.9",
+    "@types/cookie-parser": "^1.4.6",
     "@types/express": "^4.17.21",
-    "@types/jsonwebtoken": "^9.0.5",
-    "@types/node": "^20.11.16",
-    "@types/uuid": "^9.0.8",
-    "nodemon": "^3.0.3",
+    "drizzle-kit": "^0.20.14",
+    "oxlint": "^0.2.8",
     "prettier": "^3.2.5",
-    "typescript": "^5.3.3"
+    "tsx": "^4.7.1",
+    "typescript": "^5.0.0"
   },
   "prettier": {}
 }

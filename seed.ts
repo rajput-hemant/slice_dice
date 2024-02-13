@@ -1,67 +1,77 @@
-export const data = [
+import { db } from "./lib/db";
+import { employees, type NewEmployee } from "./lib/db/schema";
+
+export const SEED: NewEmployee[] = [
   {
-    currency: "USD",
-    department: "Engineering",
     name: "Abhishek",
-    salary: "145000",
+    currency: "USD",
+    salary: 145000,
+    department: "Engineering",
     sub_department: "Platform",
   },
   {
     currency: "USD",
     department: "Banking",
+    salary: 90000,
     name: "Anurag",
-    on_contract: "true",
-    salary: "90000",
     sub_department: "Loan",
+    on_contract: true,
   },
   {
-    currency: "USD",
-    department: "Engineering",
     name: "Himani",
-    salary: "240000",
+    currency: "USD",
+    salary: 240000,
+    department: "Engineering",
     sub_department: "Platform",
   },
   {
-    currency: "USD",
-    department: "Operations",
     name: "Yatendra",
-    salary: "30",
+    currency: "USD",
+    salary: 30,
+    department: "Operations",
     sub_department: "CustomerOnboarding",
   },
   {
-    currency: "USD",
-    department: "Engineering",
     name: "Ragini",
-    salary: "30",
-    sub_department: "Platform",
-  },
-  {
     currency: "USD",
+    salary: 30,
     department: "Engineering",
-    name: "Nikhil",
-    on_contract: "true",
-    salary: "110000",
     sub_department: "Platform",
   },
   {
     currency: "USD",
-    department: "Administration",
+    name: "Nikhil",
+    department: "Engineering",
+    salary: 110000,
+    sub_department: "Platform",
+    on_contract: true,
+  },
+  {
     name: "Guljit",
-    salary: "30",
+    currency: "USD",
+    salary: 30,
+    department: "Administration",
     sub_department: "Agriculture",
   },
   {
-    currency: "EUR",
-    department: "Operations",
     name: "Himanshu",
-    salary: "70000",
+    currency: "EUR",
+    salary: 70000,
+    department: "Operations",
     sub_department: "CustomerOnboarding",
   },
   {
-    currency: "INR",
-    department: "Engineering",
     name: "Anupam",
-    salary: "200000000",
+    currency: "INR",
+    salary: 200000000,
+    department: "Engineering",
     sub_department: "Platform",
   },
 ];
+
+await db
+  .insert(employees)
+  .values(SEED)
+  .then(() => {
+    console.log("\n🌱 Seeding is done\n");
+  });

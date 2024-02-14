@@ -2,7 +2,7 @@ import express from "express";
 import cookieParser from "cookie-parser";
 
 import { env } from "./lib/env";
-import { auth, employee, home, ping } from "./routes";
+import { auth, employee, home, ping, stats } from "./routes";
 // import { refreshSessionMiddleware } from "./middleware/refresh-session";
 
 const app = express();
@@ -24,6 +24,7 @@ app.use(express.json(), express.urlencoded({ extended: true }), cookieParser());
 app.use("/", home);
 app.use("/auth", auth);
 app.use("/employee", employee);
+app.use("/stats", stats);
 app.use("/ping", ping);
 
 app.listen(env.PORT, () => {

@@ -102,7 +102,7 @@ auth.post(["/login", "/signin"], async (req, res) => {
   }
 
   const key = new TextEncoder().encode(env.JWT_SECRET);
-  const expires = new Date(Date.now() + 10 * 1000);
+  const expires = new Date(Date.now() + 15 * 24 * 60 * 60 * 1000); // 15 days
 
   const payload = { id: user.id, email: user.email, expires };
 

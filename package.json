@@ -8,7 +8,7 @@
     "fmt": "prettier --write .",
     "lint": "oxlint",
     "typecheck": "tsc --noEmit",
-    "db:generate": "drizzle-kit generate:sqlite --schema=lib/db/schema.ts",
+    "db:generate": "drizzle-kit generate:sqlite",
     "db:drop": "drizzle-kit drop",
     "db:pull": "drizzle-kit introspect:sqlite",
     "db:push": "drizzle-kit push:sqlite",
